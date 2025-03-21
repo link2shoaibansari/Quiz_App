@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/gradient_box.dart';
+import 'package:quiz_app/start_screen.dart';
 
 void main() {
-  runApp(MaterialApp(home: 
-  Scaffold(body: 
-  GradientBox(),
-  ),
-  ),
+  runApp(
+    const MaterialApp(
+      home: Scaffold(
+        body: StartScreen(),
+      ),
+    ),
   );
 }
