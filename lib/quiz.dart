@@ -27,12 +27,27 @@ class _QuizContent extends State<Quiz> {
   void switchScreen() {
     setState(() {
       // activeScreen = const QuesScreen();
-      activeScreen = 'questions-screen';   
+      activeScreen = 'questions-screen';
     });
   }
 
   @override
   Widget build(context) {
+    //using if conditioning for linking multiple pages:
+    // final screenWidget =
+    //     activeScreen == 'start-screen'
+    //         ? StartScreen(switchScreen)
+    //         : const QuesScreen();
+
+    // using if condition isntead above ternary code (optional)
+
+    Widget screenWidget = StartScreen(switchScreen);
+
+    if(activeScreen == 'questions-screen')
+    {
+      screenWidget = const QuesScreen();
+    }
+
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -46,11 +61,17 @@ class _QuizContent extends State<Quiz> {
               end: Alignment.bottomRight,
             ),
           ),
+
           // child: activeScreen,   // method 1
+
           //using ternary expression for method 2:
-          child: activeScreen == 'start-screen' // condition(yields T/F)
-          ? StartScreen(switchScreen)         // if main condition is True 
-          : const QuesScreen(),               // if main condition is False
+
+          //   child: activeScreen == 'start-screen' // condition(yields T/F)
+          //   ? StartScreen(switchScreen)         // if main condition is True
+          //   : const QuesScreen(),               // if main condition is False
+
+          // method 3:
+          child: screenWidget, // defining the above declared widget in child
         ),
       ),
     );
