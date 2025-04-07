@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class StartScreen extends StatelessWidget {
   const StartScreen(this.startQuiz, {super.key});
 
-  final void Function() startQuiz;
+  final void Function() startQuiz;     // this function will work when the button is pressed
 
   @override
   Widget build(context) {
@@ -48,7 +48,7 @@ class StartScreen extends StatelessWidget {
           //   )
           ElevatedButton.icon(
             // style of button is elevated
-            onPressed: startQuiz,
+            onPressed: startQuiz,     // connecting link button to next page
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 186, 147, 223),
               foregroundColor: const Color.fromARGB(255, 6, 53, 30),
