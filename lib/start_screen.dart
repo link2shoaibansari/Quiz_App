@@ -7,7 +7,7 @@ class StartScreen extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return Center(
+    return Center(       // comment
       child: Column(
         // make things appear in center of screen
         mainAxisSize: MainAxisSize.min, // min for colums, max for row
