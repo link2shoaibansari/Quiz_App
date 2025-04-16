@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/ques_screen.dart';
 import 'package:quiz_app/start_screen.dart';
+import 'package:quiz_app/data/questions.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -13,7 +15,7 @@ class Quiz extends StatefulWidget {
 
 class _QuizContent extends State<Quiz> {
   //lifting state up for storing the answers selected
-  final List<String> selectedAnswers = []; //storing answers in list
+  List<String> selectedAnswers = []; //storing answers in list
 
   // Widget? activeScreen;  // method 1
   // ititially Widget is null (Widget?)
@@ -38,6 +40,17 @@ class _QuizContent extends State<Quiz> {
   //method which helps to add answers in the list of selectedAnswers
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
+
+    //removing last screen error
+    // if statement covers if all the questions is answered
+    if (selectedAnswers.length == questions.length) {
+      //end result screen is not made,
+      //so we go back to the start screen for now...
+      setState(() {
+        selectedAnswers = []; //resetting the selected answer list
+        activeScreen = 'start_screen';
+      });
+    }
   }
 
   @override
