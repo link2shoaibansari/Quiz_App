@@ -4,6 +4,7 @@ import 'package:quiz_app/start_screen.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
+
   @override
   State<Quiz> createState() {
     return _QuizContent();
@@ -11,6 +12,9 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizContent extends State<Quiz> {
+  //lifting state up for storing the answers selected
+  final List<String> selectedAnswers = []; //storing answers in list
+
   // Widget? activeScreen;  // method 1
   // ititially Widget is null (Widget?)
   // Widget activeScreen = const StartScreen(switchScreen);
@@ -31,6 +35,11 @@ class _QuizContent extends State<Quiz> {
     });
   }
 
+  //method which helps to add answers in the list of selectedAnswers
+  void chooseAnswer(String answer) {
+    selectedAnswers.add(answer);
+  }
+
   @override
   Widget build(context) {
     //using if conditioning for linking multiple pages:
@@ -43,9 +52,8 @@ class _QuizContent extends State<Quiz> {
 
     Widget screenWidget = StartScreen(switchScreen);
 
-    if(activeScreen == 'questions-screen')
-    {
-      screenWidget = const QuesScreen();
+    if (activeScreen == 'questions-screen') {
+      screenWidget = QuesScreen(onSelectAnswer: chooseAnswer);
     }
 
     return MaterialApp(
